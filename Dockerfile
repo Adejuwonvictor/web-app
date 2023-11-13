@@ -1,0 +1,9 @@
+FROM alpine:3.5
+RUN apk add --update py2-pip
+WORKDIR /usr/src/app
+COPY requirements.txt /usr/src/app
+RUN pip install --no-cache-dir -r -r /usr/src/app/requirements.txt
+COPY app.py /usr/src/app/
+COPY templates/index.html /usr/src/app/
+EXPOSE 80
+CMD ["python" , "/usr/src/app/app.py"]
